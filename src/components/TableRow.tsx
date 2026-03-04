@@ -57,9 +57,16 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
             type="number" 
             step="0.1"
             className={styles.input}
-            value={draft.radius}
-            // update radius in draft when user input, parseFloat to convert string to number, if invalid input, set it to 0
-            onChange={(e) => setDraft({ ...draft, radius: parseFloat(e.target.value) || 0 })} 
+            value={Number.isNaN(draft.radius) ? '' : draft.radius}
+            
+            // for radius, fix the issue when delete to empty, it should show empty instead of 0. But when start editing, it show current value 
+            onChange={(e) => {
+              const nextValue = e.target.value;
+              setDraft({
+                ...draft,
+                radius: nextValue === '' ? Number.NaN : Number(nextValue),
+              });
+            }} 
           />
         </td>
         <td className={styles.cell}>
