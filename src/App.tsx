@@ -2,22 +2,28 @@ import { useState } from 'react';
 import EditableTable from './components/EditableTable';
 import './App.css';
 import type { Inclusion } from './types';
-
-// test mock
-const initialData: Inclusion[] = [
-  {
-    id: "7c9b3e4a-1f6d-4c9e-9a4e-8c2f1e9a6d21",
-    name: "Inclusion A",
-    radius: 2.5,
-    type: "bubble"
-  }
-];
+import mockData from './data/mockData.json';
 
 function App() {
+  const [tableData, setTableData] = useState<Inclusion[]>(mockData as Inclusion[]);
+
+  const handleUpdateItem = (updatedItem: Inclusion) => {
+    setTableData((prevData) =>
+      prevData.map((item) => (item.id === updatedItem.id ? updatedItem : item))
+    );
+  }
+  
+  const handleDeleteItem = (id: string) => {
+    setTableData((prevData) => prevData.filter((item) => item.id !== id));
+  }
+
   return (
     <div className="app-container">
       <h1 className="app-title">Corning Data Editor</h1>
-      <EditableTable items={initialData} />
+      <EditableTable 
+      items={tableData} 
+      onUpdateItem={handleUpdateItem} 
+      onDeleteItem={handleDeleteItem} />
     </div>
   );
 }

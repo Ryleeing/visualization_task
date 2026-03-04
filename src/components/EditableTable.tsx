@@ -1,12 +1,13 @@
 import type { Inclusion } from '../types';
 import TableRow from './TableRow';
-import styles from './EditableTable.module.css'; // 引入 CSS Module
-
+import styles from './EditableTable.module.css'; 
 interface EditableTableProps {
   items: Inclusion[];
+  onUpdateItem: (updatedItem: Inclusion) => void;
+  onDeleteItem: (id: string) => void;
 }
 
-export default function EditableTable({ items }: EditableTableProps) {
+export default function EditableTable({ items, onUpdateItem, onDeleteItem }: EditableTableProps) {
   return (
     <table className={styles.table}>
       <thead>
@@ -20,7 +21,12 @@ export default function EditableTable({ items }: EditableTableProps) {
       
       <tbody>
         {items.map((item) => (
-          <TableRow key={item.id} item={item} />
+          <TableRow 
+            key={item.id} 
+            item={item} 
+            onSave={onUpdateItem} 
+            onDelete={onDeleteItem} 
+          />
         ))}
       </tbody>
     </table>
