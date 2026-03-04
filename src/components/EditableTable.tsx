@@ -13,7 +13,7 @@ export default function EditableTable({ items, onUpdateItem, onDeleteItem }: Edi
       <thead>
         <tr className={styles.headerRow}>
           <th className={styles.th}>Name</th>
-          <th className={styles.th}>Radius</th>
+          <th className={`${styles.th} ${styles.numberHeader}`}>Radius</th>
           <th className={styles.th}>Type</th>
           <th className={styles.th}>Actions</th>
         </tr>

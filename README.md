@@ -29,8 +29,17 @@ npm run dev
 - Pagination for large data
 
 ## User experience details
+- Data alignment(Important): Text should be left-aligned, but numeric data (Radius) is aligned by the decimal point. This allows users to quickly scan and compare magnitudes.
+**Before**
+2.33
+23.33
+**After (Decimal-Aligned)**
+2.33
+23.33
 - when create a new row, directly enter editing mode
-- Button width, pattern and color remain user frindly
+- Button width, pattern and color remain user friendly with good contrast and consistency
+- zebra striping, especially useful when there are massive data, and avoid potential misreading
+- Add units of measurement: The "Radius" column change to "Radius (mm)"
 
 ## Time Spent
 ~4.5 hours

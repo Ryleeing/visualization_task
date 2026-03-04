@@ -12,6 +12,7 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
   const isNewItem = item.name === ""; // UX details: if name is empty, we treat it as a new item and directly enter edit mode
   const [isEditing, setIsEditing] = useState(isNewItem);
   const [draft, setDraft] = useState<Inclusion>(item);
+  const [radiusIntegerPart, radiusFractionPart = ''] = String(item.radius).split('.');
 
 /**processing 3 logic of button */  
   const handleEditClick = () => {
@@ -62,7 +63,7 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
         <td className={styles.cell}>
           <input 
             type="number" 
-            step="0.1"
+            step="any"
             className={styles.input}
             value={Number.isNaN(draft.radius) ? '' : draft.radius}
             
@@ -101,7 +102,13 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
   return (
     <tr className={styles.row}>
       <td className={styles.cell}>{item.name}</td>
-      <td className={styles.cell}>{item.radius}</td>
+      <td className={`${styles.cell} ${styles.radiusCell}`}>
+        <span className={styles.radiusValue}>
+          <span className={styles.radiusInteger}>{radiusIntegerPart}</span>
+          <span className={styles.radiusDot}>{radiusFractionPart ? '.' : ''}</span>
+          <span className={styles.radiusFraction}>{radiusFractionPart}</span>
+        </span>
+      </td>
       <td className={styles.cell}>{item.type}</td>
       <td className={styles.cell}>
         <div className={styles.actions}>
