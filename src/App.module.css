@@ -10,8 +10,14 @@
   display: flex;
   justify-content: space-between; 
   align-items: center;           
+  flex-wrap: wrap;
+  gap: 12px;
   margin-bottom: 20px;
   color: #393449
+}
+
+.title {
+  margin: 0;
 }
 
 .addBtn {
@@ -24,7 +30,18 @@
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
+  white-space: nowrap;
   transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (max-width: 640px) {
+  .header {
+    align-items: stretch;
+  }
+
+  .addBtn {
+    width: 100%;
+  }
 }
 
 .addBtn:hover {

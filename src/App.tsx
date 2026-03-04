@@ -1,18 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import EditableTable from './components/EditableTable';
 import './App.css';
 import styles from './App.module.css';
 import type { Inclusion } from './types';
 import mockData from './data/mockData.json';
 
-function App() {
-  const [tableData, setTableData] = useState<Inclusion[]>(mockData as Inclusion[]);
+const LOCAL_STORAGE_KEY = 'corning_inclusions_data';
 
+function App() {
+  /** local storage */
+  const [tableData, setTableData] = useState<Inclusion[]>(()=> {
+    const storedData = localStorage.getItem(LOCAL_STORAGE_KEY);// when load, try to get data from localStorage
+    if (storedData) {
+      try {
+        return JSON.parse(storedData) as Inclusion[];
+      } catch (error) {
+        console.error("Failed to parse data from localStorage, using mock data instead.", error);
+      }
+    }
+    return mockData as Inclusion[];// if no data in localStorage, use mock data
+  });
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tableData));
+  }, [tableData]);
+
+  /** operate logic */
   const handleAddRow = () => {
     const newRow: Inclusion = {
       id: crypto.randomUUID(), // generate a unique id
       name: "",
-      radius: 0,               // default
+      radius: 0, // default
       type: "bubble"
     };
 
@@ -29,6 +47,7 @@ function App() {
   const handleDeleteItem = (id: string) => {
     setTableData((prevData) => prevData.filter((item) => item.id !== id));
   }
+  
 
   return (
     <div className={styles.appContainer}>

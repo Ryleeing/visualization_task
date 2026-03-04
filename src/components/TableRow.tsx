@@ -88,8 +88,10 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
           </select>
         </td>
         <td className={styles.cell}>
-          <button className={`${styles.btn} ${styles.saveBtn}`} onClick={handleSaveClick}>Save</button>
-          <button className={styles.btn} onClick={handleCancelClick}>Cancel</button>
+          <div className={styles.actions}>
+            <button className={`${styles.btn} ${styles.saveBtn}`} onClick={handleSaveClick}>Save</button>
+            <button className={styles.btn} onClick={handleCancelClick}>Cancel</button>
+          </div>
         </td>
       </tr>
     );
@@ -102,8 +104,10 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
       <td className={styles.cell}>{item.radius}</td>
       <td className={styles.cell}>{item.type}</td>
       <td className={styles.cell}>
-        <button className={styles.btn} onClick={handleEditClick}>Edit</button>
-        <button className={`${styles.btn} ${styles.deleteBtn}`} onClick={() => onDelete(item.id)}>Delete</button>
+        <div className={styles.actions}>
+          <button className={styles.btn} onClick={handleEditClick}>Edit</button>
+          <button className={`${styles.btn} ${styles.deleteBtn}`} onClick={() => onDelete(item.id)}>Delete</button>
+        </div>
       </td>
     </tr>
   );
