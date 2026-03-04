@@ -24,8 +24,7 @@ npm run dev
 - Basic table instead of complex DataGrid
 
 ## Improvements
-- Better keyboard support
-- Server-side persistence
+- Better keyboard support:when click enter key, it saves
 - Pagination for large data
 
 ## User experience details

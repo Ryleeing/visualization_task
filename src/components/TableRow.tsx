@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type KeyboardEvent } from 'react';
 import type { Inclusion } from '../types';
 import styles from './TableRow.module.css';
 
@@ -45,6 +45,13 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
     setIsEditing(false); 
   };
 
+  const handleEditKeyDown = (event: KeyboardEvent<HTMLInputElement | HTMLSelectElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleSaveClick();
+    }
+  };
+
 
 /**render logic */  
   // if editing, show input fields; otherwise show text
@@ -57,6 +64,7 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
             className={styles.input}
             value={draft.name}
             // update name in draft when user input
+            onKeyDown={handleEditKeyDown}
             onChange={(e) => setDraft({ ...draft, name: e.target.value })} 
           />
         </td>
@@ -66,6 +74,7 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
             step="any"
             className={styles.input}
             value={Number.isNaN(draft.radius) ? '' : draft.radius}
+            onKeyDown={handleEditKeyDown}
             
             // for radius, fix the issue when delete to empty, it should show empty instead of 0. But when start editing, it show current value 
             onChange={(e) => {
@@ -81,6 +90,7 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
           <select 
             className={styles.select}
             value={draft.type}
+            onKeyDown={handleEditKeyDown}
             onChange={(e) => setDraft({ ...draft, type: e.target.value as Inclusion['type'] })}
           >
             <option value="bubble">Bubble</option>

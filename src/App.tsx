@@ -47,15 +47,25 @@ function App() {
   const handleDeleteItem = (id: string) => {
     setTableData((prevData) => prevData.filter((item) => item.id !== id));
   }
+
+  const handleResetData = () => {
+    const defaultData = (mockData as Inclusion[]).map((item) => ({ ...item }));
+    setTableData(defaultData);
+  };
   
 
   return (
     <div className={styles.appContainer}>
       <div className={styles.header}>
         <h1 className={styles.title}>Corning Data Editor</h1>
-        <button className={styles.addBtn} onClick={handleAddRow}>
-          + Add New Row
-        </button>
+        <div className={styles.headerActions}>
+          <button className={styles.resetBtn} onClick={handleResetData}>
+            Reset to default data
+          </button>
+          <button className={styles.addBtn} onClick={handleAddRow}>
+            + Add New Row
+          </button>
+        </div>
       </div>
       <EditableTable
         items={tableData}
