@@ -13,42 +13,77 @@
 }
 
 .btn {
+  min-width: 84px;
+  height: 36px;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #cbd5e1;
   border-radius: 4px;
-  background-color: white;
+  background-color: #ffffff;
+  color: #334155;
   cursor: pointer;
   margin-right: 8px;
   font-size: 14px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn:hover {
-  background-color: #f0f0f0;
+  background-color: #f8fafc;
+  border-color: #94a3b8;
 }
 
 .deleteBtn {
-  color: #d9534f;
-  border-color: #d9534f;
+  color: #b91c1c;
+  border-color: #fecaca;
 }
 
 .deleteBtn:hover {
-  background-color: #fdf2f2;
+  background-color: #fef2f2;
+  border-color: #fca5a5;
 }
 
 .input, .select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 90%; /* add some padding */
+  width: 90%;
+  max-width: 220px;
+  box-sizing: border-box;
   font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input {
+  text-align: left;
 }
 
 .saveBtn {
-  background-color: #4CAF50;
+  background-color: #6750a4;
   color: white;
-  border-color: #4CAF50;
+  border-color: #6750a4;
 }
 
 .saveBtn:hover {
-  background-color: #45a049;
+  background-color: #5a3f99;
+  border-color: #5a3f99;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:focus-visible {
+  border-color: #6750a4;
+  box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.24);
+}
+
+.deleteBtn:focus-visible {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: #6750a4;
+  box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.18);
 }

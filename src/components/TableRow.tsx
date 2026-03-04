@@ -9,7 +9,8 @@ interface TableRowProps {
 }
 
 export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
-  const [isEditing, setIsEditing] = useState(false);
+  const isNewItem = item.name === ""; // UX details: if name is empty, we treat it as a new item and directly enter edit mode
+  const [isEditing, setIsEditing] = useState(isNewItem);
   const [draft, setDraft] = useState<Inclusion>(item);
 
 /**processing 3 logic of button */  
@@ -20,7 +21,13 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
   };
 
   const handleCancelClick = () => {
-    setIsEditing(false);
+    if (isNewItem) {
+      // UX destails: if it's a new item and user cancel, we should delete it from table
+      onDelete(item.id);
+    } else {
+      setIsEditing(false);
+      setDraft(item); 
+    }
   };
 
   const handleSaveClick = () => {

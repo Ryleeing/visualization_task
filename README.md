@@ -28,5 +28,9 @@ npm run dev
 - Server-side persistence
 - Pagination for large data
 
+## User experience details
+- when create a new row, directly enter editing mode
+- Button width, pattern and color remain user frindly
+
 ## Time Spent
 ~4.5 hours

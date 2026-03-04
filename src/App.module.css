@@ -1,9 +1,42 @@
 
-.app-container {
+.appContainer {
   padding: 20px;
   font-family: sans-serif;
+  text-align: left;
 }
 
-.app-title {
-  margin: 0 0 16px 0;
+
+.header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;           
+  margin-bottom: 20px;
+  color: #393449
+}
+
+.addBtn {
+  height: 38px;
+  background-color: #6750a4;
+  color: white;
+  border: 1px solid #6750a4;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.addBtn:hover {
+  background-color: #5a3f99;
+  border-color: #5a3f99;
+}
+
+.addBtn:focus {
+  outline: none;
+}
+
+.addBtn:focus-visible {
+  border-color: #6750a4;
+  box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.26);
 }
