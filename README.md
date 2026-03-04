@@ -41,10 +41,10 @@ npm run dev
  2.33
 23.33
 ```
+- Add units of measurement: The "Radius" column change to "Radius (mm)"
+- zebra striping, especially useful when there are massive data, it helps on tracking rows horizontally and avoiding potential misreading
 - when create a new row, directly enter editing mode
 - Button width, pattern and color remain user friendly with good contrast and consistency
-- zebra striping, especially useful when there are massive data, and avoid potential misreading
-- Add units of measurement: The "Radius" column change to "Radius (mm)"
 
 ## Time Spent
 ~4.5 hours
