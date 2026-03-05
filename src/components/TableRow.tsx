@@ -6,9 +6,11 @@ interface TableRowProps {
   item: Inclusion;
   onSave: (updatedItem: Inclusion) => void; 
   onDelete: (id: string) => void;
+  isSelected: boolean;
+  onSelect: () => void;
 }
 
-export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
+export default function TableRow({ item, onSave, onDelete, isSelected, onSelect }: TableRowProps) {
   const isNewItem = item.name === ""; // UX details: if name is empty, we treat it as a new item and directly enter edit mode
   const [isEditing, setIsEditing] = useState(isNewItem);
   const [draft, setDraft] = useState<Inclusion>(item);
@@ -45,6 +47,7 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
     setIsEditing(false); 
   };
 
+/**processing keydown event for better UX*/
   const handleEditKeyDown = (event: KeyboardEvent<HTMLInputElement | HTMLSelectElement>) => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -57,7 +60,7 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
   // if editing, show input fields; otherwise show text
   if (isEditing) {
     return (
-      <tr className={styles.row}>
+      <tr className={`${styles.row} ${isSelected ? styles.selectedRow : ''}`} onClick={onSelect}>
         <td className={styles.cell}>
           <input 
             type="text" 
@@ -110,7 +113,7 @@ export default function TableRow({ item, onSave, onDelete }: TableRowProps) {
 
   // is not editing, show normal row
   return (
-    <tr className={styles.row}>
+    <tr className={`${styles.row} ${isSelected ? styles.selectedRow : ''}`} onClick={onSelect}>
       <td className={styles.cell}>{item.name}</td>
       <td className={`${styles.cell} ${styles.radiusCell}`}>
         <span className={styles.radiusValue}>
