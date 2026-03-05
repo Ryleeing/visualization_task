@@ -64,7 +64,7 @@ export default function TableRow({ item, onSave, onDelete, isSelected, onSelect 
   // if editing, show input fields; otherwise show text
   if (isEditing) {
     return (
-      <tr className={`${styles.row} ${isSelected ? styles.selectedRow : ''}`} onClick={onSelect}>
+      <tr className={`${styles.row} ${isSelected ? styles.selectedRow : ''}`}>
         <td className={styles.cell}>
           <input 
             type="text" 
