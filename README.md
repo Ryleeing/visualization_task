@@ -68,11 +68,11 @@ When creating a new row, the application directly enters editing mode, reducing 
 Button width, patterns, and colors remain user-friendly with good contrast and consistency for an intuitive user journey.
 
 ## What I would improve with more time
-* More keyboard support: Currently, the app supports the Enter key to save edits. With more time, I would implement full keyboard support (e.g., Escape to cancel, and Tab navigation across input fields) to improve efficiency for power users.
-* Cross-device testing: Test performance in different devices(Andriod, Iphone, Mac, Windows) and system(industrial standard like windows 10+ or ipadOS16+)
-* Pagination for large data: rendering all rows is fine for a small mock dataset. However, if the table exceeds 20+ records, I would implement a pagination component (with page numbers, next/prev controls, and jump-to-start features) 
-* Unit tests: Add comprehensive unit tests.
-* Validation UX: To prevent aggressive error popups, validation feedback should be rendered directly under the inline input fields during "Edit" mode.
+* **More keyboard support:** Currently, the app supports the Enter key to save edits. With more time, I would implement full keyboard support (e.g., Escape to cancel, and Tab navigation across input fields) to improve efficiency for power users.
+* **Cross-device testing:** Test performance in different devices(Andriod, Iphone, Mac, Windows) and system(industrial standard like windows 10+ or ipadOS16+)
+* **Pagination for large data:** rendering all rows is fine for a small mock dataset. However, if the table exceeds 20+ records, I would implement a pagination component (with page numbers, next/prev controls, and jump-to-start features) 
+* **Unit tests:** Add comprehensive unit tests.
+* **Validation UX:** To prevent aggressive error popups, validation feedback should be rendered directly under the inline input fields during "Edit" mode.
 
 ## Time Spent
 
