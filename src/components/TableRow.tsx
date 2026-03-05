@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent } from 'react';
+import { useState, type KeyboardEvent, type MouseEvent } from 'react';
 import type { Inclusion } from '../types';
 import styles from './TableRow.module.css';
 
@@ -45,6 +45,10 @@ export default function TableRow({ item, onSave, onDelete, isSelected, onSelect 
 
     onSave(draft); 
     setIsEditing(false); 
+  };
+
+  const handleActionsClick = (event: MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
   };
 
 /**processing keydown event for better UX*/
@@ -102,7 +106,7 @@ export default function TableRow({ item, onSave, onDelete, isSelected, onSelect 
           </select>
         </td>
         <td className={styles.cell}>
-          <div className={styles.actions}>
+          <div className={styles.actions} onClick={handleActionsClick}>
             <button className={`${styles.btn} ${styles.saveBtn}`} onClick={handleSaveClick}>Save</button>
             <button className={styles.btn} onClick={handleCancelClick}>Cancel</button>
           </div>
@@ -124,7 +128,7 @@ export default function TableRow({ item, onSave, onDelete, isSelected, onSelect 
       </td>
       <td className={styles.cell}>{item.type}</td>
       <td className={styles.cell}>
-        <div className={styles.actions}>
+        <div className={styles.actions} onClick={handleActionsClick}>
           <button className={styles.btn} onClick={handleEditClick}>Edit</button>
           <button className={`${styles.btn} ${styles.deleteBtn}`} onClick={() => onDelete(item.id)}>Delete</button>
         </div>
